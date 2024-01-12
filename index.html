@@ -1,0 +1,174 @@
+<html>
+     <head>
+        <title>Book</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script src="main.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+       <p><i>Figure 17: Apriori speedup versus parallelism</i></p>
+        <center><img src="Screenshot%20(35).png"></center>
+        <p><i>Figure 18: Parallel Apriori, T3E completion time.</i></p>
+        <center><img src="Screenshot%20(36).png"></center>
+        <p>data skew), so the steady state of the computation is too short to balance the length of
+the startup phase. In the case of DBSCAN, the startup phase occurs in the beginning and
+at the end of the expansion of each cluster, when not enough candidate points are
+produced to exploit the degree of parallelism in the Slave. Of course, small datasets and
+small clusters prevent the farm module from ever reaching the steady state.<br>
+  The skeleton implementation of C4.5 performs well with respect to other task parallel
+schemes, but it is limited precisely by the task parallel approach. The first target of this</p>
+        <p class="copy">Copyright © 2003, Idea Group Inc. Copying or distributing in print or electronic forms without written
+permission of Idea Group Inc. is prohibited.</p>
+        <p>design was to experiment with the option of exploiting the aggregate memory, by means
+of the Shared Tree external object. The addition of the shared structure enhances the
+performance of the program, whose sequential code still works in main memory. The
+implementation of out-of-core and low-level parallel functionalities in the external
+objects is the following step in our research about parallel languages. Merging the taskparallel approach and the data-parallel one within the same program will clearly enhance
+the performance of this kind of D&C applications</p>
+        <center><h1><b>ADVANTAGES OF STRUCTURE<br>
+PARALLELISM</b></h1></center>
+        <p>  Table 1 reports some software cost measures from our experiments, which we review
+to underline the qualities of the structured approach: fast code development, code
+portability, and performance portability.</p>
+        <h2 class="oneline"><b>Development Costs and Code Expressiveness</b></h2>
+        <p>When restructuring the existing sequential code to parallel, most of the work is
+devoted to making the code modular. The amount of sequential code needed to develop
+the building blocks for structured parallel applications is reported in Table 1 as
+modularization, separate from the true parallel code. Once modularization has been
+accomplished, several prototypes for different parallel structures are usually developed
+and evaluated. The skeleton description of a parallel structure is shorter, quicker to write
+and far more readable than its equivalent written in MPI. As a test, starting from the same</p>
+        <p><i>Table 1: Software development costs for Apriori, DBSCAN and C4.5: Number of lines
+and kind of code, development times, best speedup on different target machines</i></p>
+        <img class="table" src="Screenshot%20(37).png">
+        <p class="copy">Copyright © 2003, Idea Group Inc. Copying or distributing in print or electronic forms without written
+permission of Idea Group Inc. is prohibited.</p>
+               <h2 class="oneline"><b>Performance</b></h2>
+        <p>The speed-up and scale-up results of the applications we have shown are not all
+breakthrough, but comparable to those of similar solutions performed with unstructured
+parallel programming (e.g., MPI). The Partitioned Apriori is fully scalable with respect to
+database size, like count-distribution implementations. The C4.5 prototype behaves
+better than other pure task-parallel implementations. It suffers the limits of this
+parallelization scheme, due to the support of external objects being incomplete. We know
+of no other results about spatial clustering using our approach to the parallelization of
+cluster expansion.</p>
+        <h2 class="oneline"><b>Code and Performance Portability</b></h2>
+        <p>Skeleton code is by definition portable over all the architectures that support the
+programming environment. Since the SkIE two-level parallel compiler uses standard
+compilation tools to build the final application, the intermediate code and the run-time
+support of the language can exploit all the advantages of parallel communication libraries.
+We can enhance the parallel support by using architecture-specific facilities when the
+performance gain is valuable, but as long as the intermediate code complies with industry
+standards the applications are portable to a broad set of architectures. The SMP and T3E
+tests of the ARM prototype were performed this way, with no extra development time,
+by compiling on the target machine the MPI and C++ code produced by SkIE. These
+results also show a good degree of performance portability.</p>
+        <center><h1><b>CONCLUSIONS</b></h1></center>
+        <p>We have shown how a structured parallel approach can reduce the complexity of
+parallel application design, and that the approach can be usefully applied to commonly
+used DM algorithms. The ease of sequential to parallel conversion and the good qualities
+of code reuse are valuable in the DM field, because of the need for fast prototyping
+applications and implementation solutions. Performance is achieved by means of careful
+design of the application parallel structure, with low-level details left to the compiler and
+the parallel language support.<br>
+Within the structured parallelism framework, the proposal of external objects aims
+at unifying the interfaces to different data management services: in-core memory, shared
+memory, local/parallel file systems, DBMS, and data transport layers. By decoupling the
+algorithm structure from the details of data access, we increase the architecture independence, and we allow the language support to implement the accesses in the best way,</p>
+         <p class="copy">Copyright © 2003, Idea Group Inc. Copying or distributing in print or electronic forms without written permission of Idea Group Inc. is prohibited.</p>
+        <p>according to the size of the data and the underlying software and hardware layers. These
+are very important features in the perspective of merging high-performance algorithms
+into DM environments for large-scale databases. Such a vision is strongly called for in
+the literature; nevertheless, only sequential DM tools currently address integration
+issues. On the grounds of the experiments described here with the SkIE environment, we
+are designing a full support for external objects in the new structured programming
+environment, ASSIST.<br>
+Several of the points we have mentioned are still open research problems. Which
+levels of the implementation will exploit parallelism is one of the questions. The
+development of massively parallel DBMS systems, and the progressive adoption of
+parallel file system servers, will both have a profound impact on high performance DM,
+with results that are not easy to foresee. We believe that high-level parallel languages
+can also play an important role in the organization and coordination of Grid computational
+resources into complex applications. Executing collective DM tasks over distributed
+systems requires finding the right balance between result accuracy, reduction of data
+movement, and balancing of the computational workload. To prevent us from having to
+deal with more and more complex management details at the same time, ASSIST will
+actively support Grid protocols and communication libraries.</p>
+          <center><h1><b>REFERENCES</b></h1></center>
+        <p>Agrawal, R., Mannila, H., Ramakrishnan, S., Toivonen, H., & Verkamo, A.I. (1996). Fast
+discovery of association rules. In U.M. Fayyad, G. Piatetsky-Shapiro, P. Smyth, &
+            R. Uthurusamy (eds.),<i> Advances in knowledge discovery and data mining,</i> pp. 307-
+328. Cambridge, MA: AAAI Press / MIT Press.<br>
+Agrawal, R., & Shafer, J. (1996). Parallel mining of association rules, <i>IEEE Transactions
+            on Knowledge and Data Engineering</i> 8 (6) 962-969.<br>
+Au, P., Darlington, J., Ghanem, M., Guo, Y., To, H.W., & Yang, J. (1996). Coordinating
+heterogeneous parallel computation. In L. Bouge, P.Fraigniaud, A. Mignotte &
+Y.Roberts (eds.), Europar ’96, Vol. 1124 of<i> Lecture Notes in Computer Science</i>,
+Berlin: Springer-Verlag.<br>
+Bertchold, S., Keim, D. A., & Kriegel, H.-P. (1996). The X-Tree: An index structure for
+high-dimensional data. In <i>Proceedings of the 22nd International Conference on
+            Very Large Data Bases,</i> Morgan Kaufmann Publishers, pp. 28-39.<br>
+Beyer, K., Goldstein, J., Ramakrishnan, R., & Shaft, U. (1999). When is “nearest neighbor”
+meaningful? In C. Beeri, & P. Buneman (eds.),<i> Database Theory - ICDT’99 7th
+            International Conference, Vol. 1540 of Lecture Notes in Computer Science,</i> pp.
+217-235. Berlin: Springer-Verlag.<br>
+Carletti, G. & Coppola, M. (2002). Structured<i> parallel programming and shared projects:
+Experiences in data mining classifiers. In G.R. Joubert, A. Murli, F.J. Peters, & M.
+Vanneschi (Ed.), Parallel Computing, Advances and Current Issues, Proceedings
+            of the ParCo 2001International Conference. </i>London: Imperial College Press.<br>
+Cole, M. (1989). Algorithmic skeletons: Structured management of parallel computations.
+            <i>Research Monographs in Parallel and Distributed Computing.</i> London: Pitman.
+Coppola, M. & Vanneschi, M. (2002). High-performance data mining with Skeleton-based</p>
+       <p class="copy">Copyright © 2003, Idea Group Inc. Copying or distributing in print or electronic forms without written
+permission of Idea Group Inc. is prohibited.</p>
+        <p>structured parallel programming. In <i>Parallel Computing,</i> special issue on Parallel
+Data Intensive Computing, 28(5), 793-813.<br>
+Danelutto, M. (2001). On Skeletons and design patterns. To appear in<i> Parallel Computing, Advances and Current Issues, Proceedings of ParCo 2001 International
+            Conference.</i> London: Imperial College Press.<br>
+Ester, M., Kriegel, H.-P., Sander, J., & Xu, X. (1996). A density-based algorithm for
+discovering clusters in large spatial databases with noise. In E. Simoudis, J. Han
+            & U. Fayyad (Eds.),<i> Proceedings of KDD ‘96,</i> AAAI Press, pp.226-231.<br>
+Fayyad, U. M., Piatetsky-Shapiro, G., Smyth, P., & Uthurusamy, R. (eds.) (1996).
+            <i>Advances in knowledge discovery and data mining.</i> Cambridge, MA: AAAI Press
+/ MIT Press.<br>
+Freitas, A. A. & Lavington, S.H. (1998).<i> Mining very large databases with parallel
+            processing. </i>Boston, MA: Kluwer Academic Publisher.<br>
+Joshi, M. V., Han, E.-H., Karypis, G., & Kumar, V. (2000). Efficient parallel algorithms for
+mining associations. In M. J. Zaki & C.-T. Ho (eds.), Large-scale parallel data
+            mining. Vol. 1759 of<i> Lecture Notes in Artificial Intelligence.</i> New York: Springer.<br>
+Joshi, M. V., Karypis, G. & Kumar, V (1998). ScalParC: A new scalable and efficient parallel
+            classification algorithm for mining large datasets. In <i>Proceedings of 1998 International Parallel Processing Symposium,</i> IEEE CS Press, pp. 573-579.<br>
+Maniatty, W. A. & Zaki, M. J. (2000). A requirement analysis for parallel KDD Systems.
+In J. Rolim et al. (eds.) Parallel and distributed processing, Volume 1800 of <i>Lecture
+            Notes in Computer Science.</i> Berlin: Springer-Verlag.<br>
+            Quinlan, J. (1993). C4.5:<i> Programs for machine learning.</i> San Mateo, CA: Morgan
+Kaufmann.<br>
+Savasere, A., Omiecinski, E., & Navathe, S. (1995). An efficient algorithm for mining
+association rules in large databases. In U. Dayal, P. Gray, and S. Nishio (eds.),
+Proceedings of 21st International Conference on Very Large Data Bases -VLDB ’95
+Zurich, pp. 432-444. San Francisco: Morgan Kaufmann.<br>
+Serot, J., Ginhac, D., Chapuis, R., & Derutin, J. (2001). Fast prototyping of parallel vision
+            applications using functional skeletons.<i> Machine Vision and Applications,</i> 12,
+217-290.<br>
+Shafer, J., Agrawal, R., & Mehta, M. (1996). SPRINT: A scalable parallel classifier for data
+mining. In Proceedings of the <i>22nd International Conference on Very Large Data
+            Bases - VLDB ’96.</i> , Morgan Kaufmann, pp. 544-555.<br>
+Skillicorn, D. B., & Talia, D. (1998). Models and languages for parallel computation. ACM
+            <i> Computing Surveys.</i> 30 (2) 123-169.<br>
+Sreenivas, M.K., AlSabti, K., & Ranka, S. (2000). Parallel out-of-core decision tree
+classifiers. In H. Kargupta & P. Chan (eds.), <i>Advances in distributed and parallel
+            knowledge discovery.</i> Cambridge, MA: AAAI/MIT Press.<br>
+            Srivastava, A., Han, E.-H., Kumar, V., & Singh, V. (1999). Parallel formulations of decisiontree classification algorithms. <i>Data Mining and Knowledge Discovery: An International Journal,</i> 3(3) 237-261.<br>
+Vanneschi, M. (1998a). PQE2000: HPC tools for industrial applications. <i>IEEE Concurrency:
+            Parallel, Distributed & Mobile Computing,</i> 6 (4) 68-73.<br>
+Vanneschi, M. (1998b). Heterogeneous HPC environments. In D. Pritchard & J. Reeve
+            (eds.),<i> Euro-Par ’98 Parallel Processing, </i>Vol. 1470 of Lecture Notes in Computer
+Science. Berlin: Springer-Verlag.
+
+       </p>
+    </body>
+</html>

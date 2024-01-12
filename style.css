@@ -1,0 +1,28 @@
+body{
+    padding-right: 390px;
+    padding-left: 350px;
+}
+h1{
+    font-size: 25px;
+}
+img{
+    height: 250px;
+    width: 280px;
+}
+.copy{
+    font-size: 12px;
+}
+.oneline{
+    font-size: 22px;
+}
+.line{
+    width: 80%;
+    height: 2px;
+    border: 0 none;
+    background-color: black;
+}
+.table{
+    height: auto;
+    width: auto;
+}
+
